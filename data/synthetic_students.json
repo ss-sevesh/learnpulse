@@ -1,0 +1,201 @@
+{
+  "cohort_id": "CSE-2026-SEM5-A",
+  "generated_at": "2026-09-27T08:00:00Z",
+  "students": [
+    {
+      "student_id": "STU-001",
+      "name": "Aarav Sharma",
+      "roll_no": "24ALR056",
+      "grade_level": "Undergraduate (Sem 5)",
+      "target_track": "Algorithms & Systems",
+      "overall_mastery": 54.0,
+      "current_difficulty": "Medium",
+      "topic_mastery": {
+        "recursion_call_stack": 42.0,
+        "binary_search_trees": 78.0,
+        "dynamic_programming": 35.0,
+        "hash_tables_collisions": 61.0
+      },
+      "weak_topics": [
+        "dynamic_programming",
+        "recursion_call_stack"
+      ],
+      "strong_topics": [
+        "binary_search_trees"
+      ],
+      "quiz_history": [
+        {
+          "quiz_id": "QZ-801",
+          "topic_id": "recursion_call_stack",
+          "difficulty": "Medium",
+          "score": 33.3,
+          "total_questions": 3,
+          "correct_answers": 1,
+          "timestamp": "2026-09-24T10:15:00Z"
+        },
+        {
+          "quiz_id": "QZ-802",
+          "topic_id": "dynamic_programming",
+          "difficulty": "Medium",
+          "score": 33.3,
+          "total_questions": 3,
+          "correct_answers": 1,
+          "timestamp": "2026-09-25T14:30:00Z"
+        },
+        {
+          "quiz_id": "QZ-803",
+          "topic_id": "binary_search_trees",
+          "difficulty": "Medium",
+          "score": 100.0,
+          "total_questions": 3,
+          "correct_answers": 3,
+          "timestamp": "2026-09-26T09:00:00Z"
+        }
+      ]
+    },
+    {
+      "student_id": "STU-002",
+      "name": "Priya Patel",
+      "roll_no": "24ALR012",
+      "grade_level": "Undergraduate (Sem 5)",
+      "target_track": "Data Engineering",
+      "overall_mastery": 82.5,
+      "current_difficulty": "Hard",
+      "topic_mastery": {
+        "recursion_call_stack": 88.0,
+        "binary_search_trees": 85.0,
+        "dynamic_programming": 72.0,
+        "hash_tables_collisions": 85.0
+      },
+      "weak_topics": [],
+      "strong_topics": [
+        "recursion_call_stack",
+        "binary_search_trees",
+        "hash_tables_collisions"
+      ],
+      "quiz_history": [
+        {
+          "quiz_id": "QZ-804",
+          "topic_id": "recursion_call_stack",
+          "difficulty": "Hard",
+          "score": 100.0,
+          "total_questions": 3,
+          "correct_answers": 3,
+          "timestamp": "2026-09-25T11:00:00Z"
+        },
+        {
+          "quiz_id": "QZ-805",
+          "topic_id": "hash_tables_collisions",
+          "difficulty": "Hard",
+          "score": 66.7,
+          "total_questions": 3,
+          "correct_answers": 2,
+          "timestamp": "2026-09-26T16:45:00Z"
+        }
+      ]
+    },
+    {
+      "student_id": "STU-003",
+      "name": "Rohan Deshmukh",
+      "roll_no": "24ALR034",
+      "grade_level": "Undergraduate (Sem 5)",
+      "target_track": "Full-Stack Development",
+      "overall_mastery": 46.5,
+      "current_difficulty": "Easy",
+      "topic_mastery": {
+        "recursion_call_stack": 38.0,
+        "binary_search_trees": 52.0,
+        "dynamic_programming": 36.0,
+        "hash_tables_collisions": 60.0
+      },
+      "weak_topics": [
+        "dynamic_programming",
+        "recursion_call_stack"
+      ],
+      "strong_topics": [],
+      "quiz_history": [
+        {
+          "quiz_id": "QZ-806",
+          "topic_id": "dynamic_programming",
+          "difficulty": "Easy",
+          "score": 33.3,
+          "total_questions": 3,
+          "correct_answers": 1,
+          "timestamp": "2026-09-25T17:20:00Z"
+        },
+        {
+          "quiz_id": "QZ-807",
+          "topic_id": "recursion_call_stack",
+          "difficulty": "Easy",
+          "score": 33.3,
+          "total_questions": 3,
+          "correct_answers": 1,
+          "timestamp": "2026-09-26T13:10:00Z"
+        }
+      ]
+    },
+    {
+      "student_id": "STU-004",
+      "name": "Ananya Sen",
+      "roll_no": "24ALR077",
+      "grade_level": "Undergraduate (Sem 5)",
+      "target_track": "Machine Learning",
+      "overall_mastery": 74.0,
+      "current_difficulty": "Medium",
+      "topic_mastery": {
+        "recursion_call_stack": 70.0,
+        "binary_search_trees": 75.0,
+        "dynamic_programming": 68.0,
+        "hash_tables_collisions": 83.0
+      },
+      "weak_topics": [],
+      "strong_topics": [
+        "hash_tables_collisions"
+      ],
+      "quiz_history": [
+        {
+          "quiz_id": "QZ-808",
+          "topic_id": "hash_tables_collisions",
+          "difficulty": "Medium",
+          "score": 100.0,
+          "total_questions": 3,
+          "correct_answers": 3,
+          "timestamp": "2026-09-26T15:00:00Z"
+        }
+      ]
+    },
+    {
+      "student_id": "STU-005",
+      "name": "Kavya Iyer",
+      "roll_no": "24ALR089",
+      "grade_level": "Undergraduate (Sem 5)",
+      "target_track": "Competitive Programming",
+      "overall_mastery": 91.0,
+      "current_difficulty": "Hard",
+      "topic_mastery": {
+        "recursion_call_stack": 95.0,
+        "binary_search_trees": 92.0,
+        "dynamic_programming": 88.0,
+        "hash_tables_collisions": 89.0
+      },
+      "weak_topics": [],
+      "strong_topics": [
+        "recursion_call_stack",
+        "binary_search_trees",
+        "dynamic_programming",
+        "hash_tables_collisions"
+      ],
+      "quiz_history": [
+        {
+          "quiz_id": "QZ-809",
+          "topic_id": "dynamic_programming",
+          "difficulty": "Hard",
+          "score": 100.0,
+          "total_questions": 3,
+          "correct_answers": 3,
+          "timestamp": "2026-09-26T18:30:00Z"
+        }
+      ]
+    }
+  ]
+}

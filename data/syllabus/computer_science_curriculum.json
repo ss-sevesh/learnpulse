@@ -1,0 +1,341 @@
+{
+  "curriculum_id": "CS-SEM5-ADV-DS-ALGO",
+  "subject": "Data Structures, Algorithms & Python Foundations",
+  "grade_level": "Undergraduate (Semester 5)",
+  "institution": "Department of Computer Science & Engineering",
+  "description": "Standardized syllabus and accredited textbook reference excerpts for data structures, algorithmic complexity, recursion, and core programming paradigms.",
+  "topics": [
+    {
+      "topic_id": "recursion_call_stack",
+      "name": "Recursion & Call Stack Dynamics",
+      "bloom_level": "Analysis",
+      "learning_objectives": [
+        "Formulate well-defined base cases preventing call-stack overflow.",
+        "Trace execution frames in recursive decomposition.",
+        "Contrast recursion overhead with memoization and iterative alternatives."
+      ],
+      "reference_sections": [
+        {
+          "section_id": "REC-01",
+          "title": "Anatomy of Recursive Invocations & Stack Frames",
+          "content": "A recursive function must possess two fundamental elements: at least one non-recursive base case that terminates execution, and a recursive step that reduces the problem instance toward the base case. Each recursive call allocates a new activation record (stack frame) on the program runtime stack, storing local variables, parameters, and the return address. When a base case is omitted or unreachable, repeated allocations exhaust stack memory, triggering a stack overflow (RecursionError in Python, typically defaulting to 1000 frames)."
+        },
+        {
+          "section_id": "REC-02",
+          "title": "Divide-and-Conquer Recurrence & Master Theorem",
+          "content": "Divide-and-conquer algorithms partition a problem of size n into a subproblems of size n/b, solve each recursively, and combine subproblem solutions with overhead f(n). The runtime recurrence relation T(n) = a*T(n/b) + f(n) can be analyzed via the Master Theorem. For example, Merge Sort divides an array into 2 halves (a=2, b=2) and merges in linear time f(n)=O(n), yielding O(n log n) overall time complexity across all cases."
+        },
+        {
+          "section_id": "REC-03",
+          "title": "Recursion vs Iteration and Tail-Call Elimination",
+          "content": "While any recursive function can be transformed into an iterative loop using an explicit stack data structure, recursion often yields cleaner expressions for naturally recursive structures such as trees and graphs. In languages supporting Tail-Call Optimization (TCO), a recursive call occurring in tail position reuses the current stack frame, avoiding extra memory allocation. Standard CPython does not optimize tail calls to preserve full tracebacks for debugging."
+        }
+      ],
+      "question_bank": [
+        {
+          "question_id": "Q-REC-01",
+          "difficulty": "Easy",
+          "prompt": "What is the primary purpose of a base case in a recursive function?",
+          "options": [
+            "To allocate stack memory for local variables",
+            "To provide a terminating condition that halts further recursive calls",
+            "To convert recursive operations into iterative loops automatically",
+            "To increase the Python recursion limit above 1000"
+          ],
+          "correct_option_index": 1,
+          "explanation": "A base case specifies the condition under which the function returns a concrete result without making additional recursive calls, thereby preventing infinite recursion and call stack exhaustion.",
+          "misconception_diagnoses": {
+            "0": "Stack memory is allocated by the runtime system for every function invocation, not by the base case.",
+            "2": "The base case halts recursion; it does not perform automated iterative conversion.",
+            "3": "Python recursion limits are managed via sys.setrecursionlimit(), not within individual base cases."
+          }
+        },
+        {
+          "question_id": "Q-REC-02",
+          "difficulty": "Medium",
+          "prompt": "In Merge Sort, why does the algorithm achieve O(n log n) time complexity in worst-case scenarios?",
+          "options": [
+            "Because merging two sorted sublists takes constant O(1) time",
+            "Because the recurrence tree has depth log2(n) and each level requires O(n) total merge work",
+            "Because quick partitions pivot elements in-place without recursion",
+            "Because Python's list comprehension vectorizes comparisons in hardware"
+          ],
+          "correct_option_index": 1,
+          "explanation": "Merge sort repeatedly halves the input array, creating a recursion tree of height log2(n). At each level of the tree, merging the subarrays takes O(n) total operations, resulting in O(n * log n) time across best, average, and worst cases.",
+          "misconception_diagnoses": {
+            "0": "Merging two sorted sublists of total length n requires traversing all elements, taking O(n) linear time, not O(1).",
+            "2": "In-place partitioning is characteristic of Quick Sort, not Merge Sort.",
+            "3": "List comprehensions do not alter algorithmic asymptotic complexity."
+          }
+        },
+        {
+          "question_id": "Q-REC-03",
+          "difficulty": "Hard",
+          "prompt": "Consider recursive calculation of Fibonacci numbers without memoization: F(n) = F(n-1) + F(n-2). What is the exact time complexity and primary cause of its inefficiency?",
+          "options": [
+            "O(n^2) due to quadratic looping inside each stack frame",
+            "O(2^n) exponential time due to redundant re-computation of overlapping subproblems",
+            "O(n log n) because binary branch splits match binary search trees",
+            "O(n) linear time because each integer from 1 to n is computed once"
+          ],
+          "correct_option_index": 1,
+          "explanation": "Naive recursive Fibonacci generates a binary call tree where subproblems (e.g. F(n-2), F(n-3)) are recomputed an exponential number of times, resulting in O(2^n) time complexity (specifically O(1.618^n)). Applying top-down memoization reduces this to O(n) linear time.",
+          "misconception_diagnoses": {
+            "0": "There are no nested loops; the branching call tree is what causes exponential expansion.",
+            "2": "The tree depth is n, not log n, so the node count is exponential 2^n rather than n log n.",
+            "3": "Linear time is only achieved when using memoization or an iterative bottom-up array."
+          }
+        }
+      ]
+    },
+    {
+      "topic_id": "binary_search_trees",
+      "name": "Binary Search Trees & Balancing",
+      "bloom_level": "Application",
+      "learning_objectives": [
+        "Enforce the BST invariant (left < root < right) during insertion and deletion.",
+        "Demonstrate tree traversals: in-order, pre-order, and post-order.",
+        "Explain tree height degradation into linked lists and the role of AVL/Red-Black self-balancing."
+      ],
+      "reference_sections": [
+        {
+          "section_id": "BST-01",
+          "title": "BST Invariant and Asymmetric Tree Degradation",
+          "content": "A Binary Search Tree satisfies the ordering property: for every node X, all keys in X's left subtree are strictly less than X.key, and all keys in X's right subtree are strictly greater than X.key. Search, insertion, and deletion operations run in O(h) time, where h is the height of the tree. In the best and average case of uniformly distributed keys, h = O(log n). However, inserting keys in already sorted or reverse-sorted order degrades the tree into a linear linked list where h = n, ballooning operations to O(n) worst-case time."
+        },
+        {
+          "section_id": "BST-02",
+          "title": "BST Deletion with Hibbard Deletion Logic",
+          "content": "Deleting a node from a BST entails three cases: 1) Node is a leaf: simply remove parent pointer. 2) Node has one child: splice child to parent. 3) Node has two children: locate the in-order successor (the smallest key in the right subtree) or in-order predecessor (largest in left subtree), copy its value to the target node, and recursively delete the successor from the subtree."
+        },
+        {
+          "section_id": "BST-03",
+          "title": "Self-Balancing Principles: AVL and Red-Black Rotations",
+          "content": "Self-balancing binary trees maintain O(log n) worst-case height through tree rotations. An AVL tree enforces that for every node, the height difference (balance factor) between left and right subtrees is at most 1. Violations trigger single or double rotations (LL, RR, LR, RL). Red-Black trees use color bits and rotation rules to guarantee that no path from root to leaf is more than twice as long as any other path."
+        }
+      ],
+      "question_bank": [
+        {
+          "question_id": "Q-BST-01",
+          "difficulty": "Easy",
+          "prompt": "Which traversal order on a Binary Search Tree produces values in strictly ascending sorted order?",
+          "options": [
+            "Pre-order traversal (Root, Left, Right)",
+            "In-order traversal (Left, Root, Right)",
+            "Post-order traversal (Left, Right, Root)",
+            "Level-order breadth-first traversal"
+          ],
+          "correct_option_index": 1,
+          "explanation": "Because the BST invariant guarantees that all values in the left subtree are smaller than the root, and all values in the right subtree are larger, an in-order traversal (Left -> Node -> Right) visits nodes in strictly increasing non-decreasing order.",
+          "misconception_diagnoses": {
+            "0": "Pre-order visits the parent before its children, which is useful for cloning trees, not sorting.",
+            "2": "Post-order visits children before the parent, which is used for bottom-up node deletion/evaluation.",
+            "3": "Level-order traverses nodes tier by tier, which does not guarantee sorted value ordering."
+          }
+        },
+        {
+          "question_id": "Q-BST-02",
+          "difficulty": "Medium",
+          "prompt": "What happens to the search time complexity of a standard un-balanced BST if elements [10, 20, 30, 40, 50] are inserted in sequential ascending order?",
+          "options": [
+            "It remains O(log n) because the tree rebalances on each insert",
+            "It degrades to O(n) because each node becomes the right child of the previous, creating a skewed linked list",
+            "It drops to O(1) through automatic hash table indexing",
+            "It causes an immediate runtime error due to strictly monotonic input"
+          ],
+          "correct_option_index": 1,
+          "explanation": "Sequential insertions cause each new key to be greater than all preceding keys, forcing each element into the right child position. The tree height equals n, degrading search performance to O(n) linear search.",
+          "misconception_diagnoses": {
+            "0": "A standard BST does not self-balance; only balanced variants like AVL or Red-Black trees maintain O(log n).",
+            "2": "BSTs store pointers, not hash tables.",
+            "3": "Monotonic inputs are completely valid in BSTs, but cause geometric degeneration into a degenerate tree."
+          }
+        },
+        {
+          "question_id": "Q-BST-03",
+          "difficulty": "Hard",
+          "prompt": "When deleting a node with two children in a BST, how is the in-order successor located and why is it used?",
+          "options": [
+            "Find the root node of the entire tree to replace the deleted key",
+            "Find the smallest element in the right subtree; it has at most one child and safely preserves the BST ordering",
+            "Find the largest element in the right subtree by traversing all right children",
+            "Randomly pick between left and right children and shift child pointers recursively"
+          ],
+          "correct_option_index": 1,
+          "explanation": "The in-order successor is the minimum element in the deleted node's right subtree (found by moving right once, then left until reaching a node without a left child). Replacing the deleted key with this value guarantees all left subtree keys remain smaller and all remaining right subtree keys remain larger.",
+          "misconception_diagnoses": {
+            "0": "The global root cannot be placed in an arbitrary subtree without invalidating the invariant across other branches.",
+            "2": "The largest element in the right subtree is greater than other right-subtree nodes, violating the right-hand ordering if substituted.",
+            "3": "Arbitrary pointer shifting creates cycles and violates key ordering."
+          }
+        }
+      ]
+    },
+    {
+      "topic_id": "dynamic_programming",
+      "name": "Dynamic Programming & Memoization",
+      "bloom_level": "Synthesis",
+      "learning_objectives": [
+        "Identify the two essential properties: Optimal Substructure and Overlapping Subproblems.",
+        "Contrast top-down memoization (recursion + cache) with bottom-up tabulation (iterative array).",
+        "Construct recurrence relations and reconstruct optimal solutions."
+      ],
+      "reference_sections": [
+        {
+          "section_id": "DP-01",
+          "title": "Fundamental Prerequisites: Optimal Substructure and Overlapping Subproblems",
+          "content": "Dynamic Programming (DP) is applicable when a problem exhibits: 1) Optimal Substructure: the optimal solution to the global problem is composed of optimal solutions to its constituent subproblems. 2) Overlapping Subproblems: recursive decomposition revisits identical subproblems repeatedly rather than generating new independent subproblems (as in Merge Sort). Without overlapping subproblems, divide-and-conquer is sufficient; without optimal substructure, greedy or dynamic algorithms fail."
+        },
+        {
+          "section_id": "DP-02",
+          "title": "Top-Down Memoization vs Bottom-Up Tabulation",
+          "content": "Top-down memoization preserves the intuitive recursive structure of a problem, caching the result of each subproblem call in a hash map or lookup table before returning. Bottom-up tabulation eliminates recursion overhead entirely by ordering subproblems topologically, iteratively filling an array or table from base cases upward. Tabulation enables space optimizations (e.g. rolling arrays in 0/1 Knapsack or Fibonacci) from O(n) to O(1) auxiliary space."
+        },
+        {
+          "section_id": "DP-03",
+          "title": "The 0/1 Knapsack Problem and State Transitions",
+          "content": "In the 0/1 Knapsack problem with items having weights w[i] and values v[i], and max capacity W, the state dp[i][w] represents the maximum value achievable considering the first i items with remaining capacity w. The state transition is: dp[i][w] = max(dp[i-1][w], v[i] + dp[i-1][w - w[i]]) if w >= w[i], else dp[i-1][w]. The time complexity is O(n*W), which is pseudo-polynomial in nature."
+        }
+      ],
+      "question_bank": [
+        {
+          "question_id": "Q-DP-01",
+          "difficulty": "Easy",
+          "prompt": "Which two criteria must a problem satisfy to be effectively solvable using Dynamic Programming?",
+          "options": [
+            "Linear time complexity and sorted array input",
+            "Optimal substructure and overlapping subproblems",
+            "Monotonic stack behavior and breadth-first search",
+            "Constant memory usage and tail-call optimization"
+          ],
+          "correct_option_index": 1,
+          "explanation": "Dynamic Programming requires optimal substructure (optimal global solutions derive from optimal subproblem solutions) and overlapping subproblems (the same subproblems are solved repeatedly).",
+          "misconception_diagnoses": {
+            "0": "DP problems often have polynomial or pseudo-polynomial complexity and do not require sorted inputs.",
+            "2": "Monotonic stacks and BFS are specific algorithmic techniques, not foundational prerequisites for DP.",
+            "3": "Tabulation often requires O(n) or O(n*W) auxiliary storage."
+          }
+        },
+        {
+          "question_id": "Q-DP-02",
+          "difficulty": "Medium",
+          "prompt": "What is the primary advantage of bottom-up tabulation over top-down memoization in Dynamic Programming?",
+          "options": [
+            "Tabulation avoids call stack overhead and enables auxiliary space reduction",
+            "Tabulation solves fewer total subproblems than memoization for sparse subproblem graphs",
+            "Tabulation automatically converts exponential algorithms into O(1) constant time",
+            "Tabulation eliminates the need for mathematical recurrence relations"
+          ],
+          "correct_option_index": 0,
+          "explanation": "Bottom-up tabulation solves subproblems iteratively from base cases up, eliminating recursion stack frames (preventing call stack overflows) and allowing space optimization when only recent states (e.g., previous row) are needed.",
+          "misconception_diagnoses": {
+            "1": "If only a fraction of subproblems need evaluation, top-down memoization evaluates fewer subproblems than tabulation.",
+            "2": "Tabulation does not reduce time complexity to O(1); it typically shares the same asymptotic runtime as memoization.",
+            "3": "Both memoization and tabulation require an identical underlying recurrence relation."
+          }
+        },
+        {
+          "question_id": "Q-DP-03",
+          "difficulty": "Hard",
+          "prompt": "Why is the O(n*W) time complexity of the 0/1 Knapsack algorithm classified as 'pseudo-polynomial' rather than strictly polynomial?",
+          "options": [
+            "Because W represents the numeric magnitude of capacity, which is exponential in its bit length (log2 W)",
+            "Because n is always smaller than the machine word size",
+            "Because the array indexing incurs hidden O(log n) hash lookups",
+            "Because Python garbage collection pauses during large matrix allocation"
+          ],
+          "correct_option_index": 0,
+          "explanation": "In computational complexity theory, an algorithm is polynomial if its running time is polynomial in the length of the input in bits. Capacity W is represented in log2(W) bits. Since O(n*W) = O(n * 2^(log2 W)), the runtime is exponential with respect to the input representation length of W.",
+          "misconception_diagnoses": {
+            "1": "Machine word size affects hardware instruction performance, not theoretical asymptotic polynomial categorization.",
+            "2": "Dense matrix lookups in 2D arrays are O(1) constant time offset calculations.",
+            "3": "Garbage collection is a language runtime artifact, unrelated to formal algorithmic complexity classes."
+          }
+        }
+      ]
+    },
+    {
+      "topic_id": "hash_tables_collisions",
+      "name": "Hash Tables & Collision Resolution",
+      "bloom_level": "Comprehension",
+      "learning_objectives": [
+        "Explain hash functions, uniform hashing, and avalanche effect.",
+        "Contrast separate chaining with open addressing (linear probing, quadratic probing, double hashing).",
+        "Analyze load factors (alpha = n / m) and dynamic rehashing thresholds."
+      ],
+      "reference_sections": [
+        {
+          "section_id": "HASH-01",
+          "title": "Hash Table Foundations and the Uniform Hashing Assumption",
+          "content": "A hash table implements an associative array abstract data type mapping keys to values using a hash function h(k). Simple Uniform Hashing assumes each key is equally likely to hash to any of the m slots independently of other keys. Under this condition, average search, insertion, and deletion operate in O(1) constant time. However, by the Pigeonhole Principle and Birthday Paradox, collisions where h(k1) = h(k2) are inevitable whenever keys exceed or approach table capacity."
+        },
+        {
+          "section_id": "HASH-02",
+          "title": "Collision Resolution: Separate Chaining vs Open Addressing",
+          "content": "In Separate Chaining, each bucket stores a linked list (or balanced tree if bucket length exceeds a threshold like in Java 8+) of colliding elements. The load factor alpha = n/m can exceed 1.0. In Open Addressing, all elements reside within the table itself (alpha <= 1.0). When collisions occur, probing sequences explore alternative indices: Linear Probing (h(k, i) = (h'(k) + i) mod m, susceptible to primary clustering), Quadratic Probing, or Double Hashing (h(k, i) = (h1(k) + i*h2(k)) mod m, resolving clustering)."
+        },
+        {
+          "section_id": "HASH-03",
+          "title": "Load Factor and Dynamic Rehashing Cost",
+          "content": "When the load factor alpha exceeds a set threshold (typically 0.70 to 0.75 in high-performance implementations like Python dicts or Java HashMaps), the table dynamically resizes (typically doubling capacity m -> 2m) and rehashes every existing key. While individual resizing takes O(n) time, amortized analysis across n insertions proves that each insertion still incurs only O(1) amortized constant time."
+        }
+      ],
+      "question_bank": [
+        {
+          "question_id": "Q-HASH-01",
+          "difficulty": "Easy",
+          "prompt": "What occurs when two distinct keys produce the exact same bucket index from a hash function?",
+          "options": [
+            "An immediate Segmentation Fault",
+            "A hash collision, requiring a resolution strategy such as chaining or open addressing",
+            "Automatic overwriting of the first key without warning",
+            "Conversion of the hash table into an array list"
+          ],
+          "correct_option_index": 1,
+          "explanation": "A hash collision happens when h(k1) = h(k2) for k1 != k2. Robust hash tables resolve collisions using techniques like separate chaining (storing entries in linked lists/trees) or open addressing (probing for vacant slots).",
+          "misconception_diagnoses": {
+            "0": "Collisions are normal anticipated algorithmic events, not memory violations.",
+            "2": "Overwriting only occurs if the keys themselves are identical (k1 == k2), not merely their hash indices.",
+            "3": "Hash tables maintain their internal collision structures without transforming into flat arrays."
+          }
+        },
+        {
+          "question_id": "Q-HASH-02",
+          "difficulty": "Medium",
+          "prompt": "What is 'primary clustering' in open addressing and which probing strategy is most vulnerable to it?",
+          "options": [
+            "Long contiguous runs of occupied slots that cause search times to degrade, most prevalent in linear probing",
+            "Multiple keys having identical secondary hash values in double hashing",
+            "Linked lists growing excessively long in separate chaining",
+            "Memory fragmentation during dynamic memory reallocation"
+          ],
+          "correct_option_index": 0,
+          "explanation": "In linear probing, when collisions occur, keys take the next adjacent free slot. This creates contiguous blocks of occupied cells. Any key hashing into a cluster extends the cluster, causing search times to deteriorate towards O(n).",
+          "misconception_diagnoses": {
+            "1": "Double hashing uses a second hash function specifically designed to eliminate primary clustering.",
+            "2": "Separate chaining does not suffer from primary clustering because keys outside a bucket are never probed.",
+            "3": "Clustering is a mathematical collision pattern, not an OS memory fragmentation phenomenon."
+          }
+        },
+        {
+          "question_id": "Q-HASH-03",
+          "difficulty": "Hard",
+          "prompt": "Why does a hash table resizing operation from capacity m to 2m maintain O(1) amortized insertion time despite taking O(n) during resize?",
+          "options": [
+            "Because modern CPUs perform vector re-indexing concurrently in L1 cache",
+            "Because the costly O(n) rehashing is paid for by the preceding O(n) inexpensive O(1) insertions (aggregate method)",
+            "Because keys are copied without calculating new hash values",
+            "Because only 1% of the keys are actually moved to the new table"
+          ],
+          "correct_option_index": 1,
+          "explanation": "Using amortized aggregate analysis or the potential method, doubling the table occurs only after at least n/2 insertions have been performed at O(1) cost. Distributing the O(n) resizing cost across these n/2 operations adds a constant overhead to each insertion, preserving O(1) amortized complexity.",
+          "misconception_diagnoses": {
+            "0": "Hardware caches accelerate memory access but do not alter theoretical asymptotic amortized complexity.",
+            "2": "Because the table size m changes, bucket indices (hash % m) change for almost every key; they must be re-indexed.",
+            "3": "All existing keys must be relocated to appropriate slots in the newly allocated table."
+          }
+        }
+      ]
+    }
+  ]
+}

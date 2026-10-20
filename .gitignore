@@ -1,0 +1,51 @@
+# Secrets & environment
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+*.spec
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+node_modules/
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+htmlcov/
+*.xml
+
+# IDEs
+.vscode/
+.idea/
+*.suo
+*.user
+
+# OS artefacts
+.DS_Store
+Thumbs.db
+
+# Local learner data
+data/learnpulse.sqlite3*
+data/uploads/
+data/qdrant_db/
+
+# Other local workspace projects and assignment drafts
+.agents/
+agentic-build-and-orchestrate-ai-agents-while-you-sleep/
+jev_client.py
+Personalised_Learning_Assessment_Generator (1).ipynb
+Project10_Personalised_Learning_Assessment_Generator (1).docx
