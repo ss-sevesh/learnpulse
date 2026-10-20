@@ -201,3 +201,93 @@ button:disabled { cursor: not-allowed; opacity: .55; }
 @media (prefers-reduced-motion: reduce) {
   *, *:before, *:after { animation: none !important; transition: none !important; }
 }
+
+/* Velara-inspired dark dashboard theme for LearnPulse's existing workflows. */
+:root { font-family: Inter, "Segoe UI", Arial, sans-serif; color: #f5f3f8; background: #09090d; }
+:focus-visible, .upload-button:focus-within { outline-color: #bb86ff; }
+.app-shell { background: #09090d; }
+.topbar { background: #0d0d12; border-color: #25232d; }
+.brand-mark { color: #f5eaff; background: #a854f6; border-radius: 12px; box-shadow: 0 0 24px #a854f640; }
+.brand small { color: #9e94ad; }
+.model-status, .profile-select select, .icon-button { background: #1c1b23; border-color: #38343f; }
+.model-status { color: #9ce8c1; }
+.model-status.offline { color: #ffd494; }
+.profile-select { color: #a9a1b4; }
+.icon-button:hover, .model-status:hover { border-color: #a854f6; }
+.create-profile { color: #f5f3f8; background: #1b1a21; border-color: #39323f; box-shadow: 0 16px 40px #0008; }
+.create-profile input, .action-bar select { color: #f5f3f8; background: #121217; border-color: #4b4356; }
+.sidebar { background: #111116; border-right: 1px solid #25232d; }
+.side-label { color: #81788e; }
+.nav-item { color: #a8a2b2; border-radius: 10px; }
+.nav-item:hover { color: #fff; background: #24202d; }
+.nav-item.active { color: #e0c2ff; background: #a854f61d; box-shadow: inset 2px 0 #a854f6; }
+.side-note { color: #8e879a; }
+.content { position: relative; isolation: isolate; max-width: 1500px; overflow: hidden; }
+.content-video {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.content::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  background: #09090db8;
+}
+.eyebrow { color: #ae72ec; }
+.page-head h1 { color: #faf8fc; font-size: clamp(34px, 3.5vw, 48px); font-weight: 700; }
+.page-head p, .muted { color: #aaa3b2; }
+.section-heading h2 { color: #f2eef7; }
+.section-heading span { color: #948b9e; }
+.primary, .upload-button { color: #fff; background: #a854f6; border-color: #a854f6; border-radius: 10px; }
+.primary:hover, .upload-button:hover { background: #8f3bdc; border-color: #8f3bdc; }
+.continue-strip { background: radial-gradient(circle at 85% 20%, #6f34958c, transparent 45%), #201429; border: 1px solid #6a3a82; border-radius: 18px; }
+.continue-strip .eyebrow { color: #dcb9ff; }
+.continue-strip p { color: #c7b9d0; }
+.continue-strip .primary { color: #fff; background: #a854f6; border-color: #a854f6; }
+.continue-strip .primary:hover { background: #8f3bdc; }
+.topic-list, .material-list, .panel, .source, .result-panel { color: #f5f3f8; background: #17171d; border-color: #302d36; border-radius: 14px; }
+.topic-row { color: #f5f3f8; border-color: #302d36; }
+.topic-row:hover { background: #231d2a; }
+.topic-number, .topic-row > svg, .text-button, .mastery-row strong, .history-row > span { color: #c48af8; }
+.topic-details small, .material-name small { color: #a9a1b2; }
+.upload-panel { background: #1b1922; border-color: #40334d; border-radius: 14px; }
+.upload-symbol, .file-icon { color: #dcb9ff; background: #a854f628; }
+.upload-panel p, .upload-panel > small { color: #aaa3b2; }
+.material-row, .feedback, .history-row { border-color: #302d36; }
+.icon-button.danger { color: #c8a5a9; }
+.icon-button.danger:hover { color: #ffaaa6; background: #552f37; }
+.empty { color: #aaa3b2; background: #17171d; border-color: #48404f; border-radius: 14px; }
+.empty.tall { border-left-color: #a854f6; }
+.empty svg, .empty strong { color: #d4a6ff; }
+.how { color: #a9a1b2; border-color: #302d36; }
+.how summary { color: #c48af8; }
+.action-bar label { color: #aaa3b2; }
+.panel-meta, .quiz-meta { color: #c48af8; border-color: #302d36; }
+.panel-meta span, .quiz-meta span { color: #aaa3b2; }
+.study-main p, .study-main li, .study-main .lead { color: #d2ccd8; }
+.study-main pre { color: #e6d4f8; background: #0e0d13; }
+.study-main .disclaimer { color: #9e96a7; border-color: #302d36; }
+.source-head span, .feedback small { color: #bd8fe7; }
+.source p, .result-panel p { color: #bcb4c4; }
+.question legend span, .option span, .result-tier, .score { color: #c48af8; }
+.question .option { color: #e4dfea; border-color: #3b3541; }
+.option.chosen { background: #a854f626; border-color: #a854f6; }
+.option input { accent-color: #a854f6; }
+.result-tier { border-color: #302d36; }
+.stats > div { background: #1c1924; border-color: #40334d; border-radius: 14px; }
+.stats small { color: #aaa3b2; }
+.stats strong { color: #e6c9ff; }
+.track { background: #342c3c; }
+.track span { background: #a854f6; }
+.history-row small { color: #aaa3b2; }
+.alert { color: #ffd0cf; background: #3b2027; border-color: #8e4d56; }
+.notice { color: #ffdfa5; background: #382b20; border-color: #755a36; }
+@media (max-width: 900px) { .sidebar { border-right: 0; border-bottom: 1px solid #25232d; } }
+@media (prefers-reduced-motion: reduce) { .content-video { display: none; } }

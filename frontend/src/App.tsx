@@ -142,6 +142,7 @@ export default function App() {
     <div className="layout">
       <aside className="sidebar"><div className="side-label">WORKSPACE</div><nav aria-label="Main navigation">{tabs.map(item => <button key={item.id} className={`nav-item ${tab === item.id ? 'active' : ''}`} aria-current={tab === item.id ? 'page' : undefined} onClick={() => { setTab(item.id); setError('') }}><item.icon size={18} /><span>{item.label}</span><ChevronRight size={14} /></button>)}</nav><div className="side-note">All data stays on this computer. Local profiles have no password protection.</div></aside>
       <main className="content">
+        <video className="content-video" autoPlay loop muted playsInline aria-hidden="true"><source src="/purple-desert.mp4" type="video/mp4" /></video>
         {error && <div className="alert" role="alert"><span>{error}</span><button aria-label="Dismiss error" onClick={() => setError('')}>×</button></div>}
         {!model?.available && <div className="notice"><Server size={17} /><span>{model?.message || 'Checking Ollama…'} Study and Practice need the local model.</span><button onClick={() => api.status().then(setModel)}>Retry</button></div>}
         {tab === 'library' && <section>

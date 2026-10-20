@@ -13,8 +13,8 @@ Audience: learners using a trusted local computer. The primary job is to choose 
 
 ## Visual rules
 
-- A dark green navigation rail frames a warm, light reading surface. Green marks actions and progress; amber marks model issues, and coral marks errors.
-- System sans carries headings and reading text. Monospace is reserved for small technical metadata. Body text remains readable at 320 px.
+- A near-black navigation rail frames dark reading surfaces. The supplied `purple-desert.mp4` plays behind the main content, with a dark overlay and solid cards to keep text readable. Violet marks actions, selection, and progress; amber marks model issues, and coral marks errors. The direction comes from the supplied Velara template, adapted to LearnPulse content and controls.
+- Inter when installed, then system sans, carries headings and reading text. Monospace is reserved for small technical metadata. Body text remains readable at 320 px.
 - The Library leads with the lowest-mastery course topic, then shows a compact course list beside the upload area. Uploaded files appear directly below that area.
 - One sidebar on desktop becomes horizontal navigation on narrow screens. Library, study, and quiz columns stack on smaller viewports.
 - Borders and spacing create hierarchy; no simulated activity, oversized card grid, heavy motion, or marketing hero. Respect reduced-motion preference.
@@ -24,6 +24,7 @@ The console style is for visual clarity; labels use learner language. Source sim
 
 ## Reference decisions
 
+- The supplied Velara dashboard informed the dark palette, violet accents, and card treatment.
 - Readwise Reader's library workflow informed the separation between available course material and personal files.
 - Linear's dense detail views informed compact rows, restrained borders, and persistent navigation.
 - The app's own source and quiz flows determine content and actions; no reference branding or layout is copied.
